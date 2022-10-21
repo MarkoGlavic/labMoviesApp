@@ -14,7 +14,6 @@ import SiteHeader from './components/siteHeader'
           <BrowserRouter>
               <SiteHeader />     
               <Routes>
-
       <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
         <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
         <Route path="/movies/:id" element={<MoviePage />} />
