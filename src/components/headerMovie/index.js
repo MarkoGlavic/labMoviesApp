@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd'
 import { useNavigate } from "react-router-dom";
 
 const MovieHeader = (props) => {
