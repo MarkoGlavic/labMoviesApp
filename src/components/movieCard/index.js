@@ -17,6 +17,8 @@ import img from '../../images/film-poster-placeholder.png'
 import { MoviesContext } from "../../contexts/moviesContext";
 
 export default function MovieCard({ movie, action }) {  const { favourites, addToFavourites } = useContext(MoviesContext);
+
+
  
    if (favourites.find((id) => id === movie.id)) {
      movie.favourite = true;
