@@ -7,7 +7,7 @@ import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
 
 
 const ShowPage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('discover', getShows)
+  const {  data, error, isLoading, isError }  = useQuery('discover-shows', getShows)
 
   if (isLoading) {
     return <Spinner />
@@ -18,10 +18,10 @@ const ShowPage = (props) => {
   }  
   const shows = data.results;
 
-//   // Redundant, but necessary to avoid app crashing.
-//   const favourites = movies.filter(m => m.favourite)
-//   localStorage.setItem('favourites', JSON.stringify(favourites))
-//   const addToFavourites = (movieId) => true 
+ //Redundant, but necessary to avoid app crashing.
+const favourites = shows.filter(m => m.favourite)
+ localStorage.setItem('favourites', JSON.stringify(favourites))
+ const addToFavourites = (showId) => true 
 
   
     return (
