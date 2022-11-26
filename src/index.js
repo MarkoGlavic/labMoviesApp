@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage"; 
+import ShowPage from "./pages/showPage";
 import {Link} from 'react-router-dom'
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader'
@@ -32,6 +33,8 @@ const queryClient = new QueryClient({
               <Routes>
               <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
               <Route path="/movies/upcoming" element={ < UpcomingPage/> } />
+              <Route path="/shows" element={ < ShowPage/> } />
+
       <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
         <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
         <Route path="/movies/:id" element={<MoviePage />} />
