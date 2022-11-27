@@ -18,10 +18,6 @@ const ShowPage = (props) => {
   }  
   const shows = data.results;
 
- //Redundant, but necessary to avoid app crashing.
-const favourites = shows.filter(m => m.favourite)
- localStorage.setItem('favourites', JSON.stringify(favourites))
- const addToFavourites = (showId) => true 
 
   
     return (

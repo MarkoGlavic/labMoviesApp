@@ -3,6 +3,7 @@ import {createRoot} from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
+import ShowPagee from "./pages/showDetailsPage"
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage"; 
 import ShowPage from "./pages/showPage";
 import {Link} from 'react-router-dom'
@@ -34,6 +35,7 @@ const queryClient = new QueryClient({
               <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
               <Route path="/movies/upcoming" element={ < UpcomingPage/> } />
               <Route path="/shows" element={ < ShowPage/> } />
+              <Route path="/shows/:id" element={<ShowPagee />} />
 
       <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
         <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
