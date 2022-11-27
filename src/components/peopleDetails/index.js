@@ -2,8 +2,9 @@ import React, { useState} from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import MonetizationIcon from "@mui/icons-material/MonetizationOn";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import StarRate from "@mui/icons-material/StarRate";
+import PublicIcon from '@mui/icons-material/Public';
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
@@ -20,56 +21,35 @@ const root = {
     margin: 0,
 };
 const chip = { margin: 0.5 };
-const ShowDetails = ({ show }) => {  // Don't miss this!
+const PeopleDetails = ({ people }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
 
 
   return (
     <>
       <Typography variant="h5" component="h3">
-        Overview
+        Biography
       </Typography>
 
       <Typography variant="h6" component="p">
-        {show.overview}
+        {people.biography}
       </Typography>
 
       <Paper 
         component="ul" 
         sx={root}
       >
-        <li>
-          <Chip label="Genres" sx={chip} color="primary" />
-        </li>
-        {show.genres.map((g) => (
-          <li key={g.name}>
-            <Chip label={g.name} sx={chip} />
-          </li>
-        ))}
       </Paper>
       <Paper component="ul" sx={root}>
-      <li>
-          <Chip label="Info" sx={chip} color="primary" />
-        </li>
-        <Chip icon={<AccessTimeIcon />} label={`${show.episode_run_time} episode run time`} />
-        <Chip
-          icon={<StarRate />}
-          label={`${show.vote_average} (${show.vote_count})`}
-        />
-        <Chip label={`Released: ${show.first_air_date}`} />
+        <Chip icon={<CalendarMonthIcon />} label={`Date of Birth: ${people.birthday}`} />
+      
+        <Chip icon={<PublicIcon />} label={`Born in: ${people.place_of_birth}`} />
       </Paper>
       <Paper 
         component="ul" 
         sx={root}
       >
-        <li>
-          <Chip label="Production Countries" sx={chip} color="primary" />
-        </li>
-        {show.production_countries.map((c) => (
-          <li key={c.name}>
-            <Chip label={c.name} sx={chip} />
-          </li>
-        ))}
+  
       </Paper>
         <Fab
         color="secondary"
@@ -89,4 +69,4 @@ const ShowDetails = ({ show }) => {  // Don't miss this!
     </>
   );
 };
-export default ShowDetails ;
+export default PeopleDetails ;
