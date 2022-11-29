@@ -17,21 +17,12 @@ const Header = (props ) => {
         marginBottom: 1.5,
       }}
       >
-      <IconButton
-        aria-label="go back"
-      >
-      </IconButton>
+    
 
       <Typography variant="h4" component="h3">
         {title}
       </Typography>
-      <IconButton
-        aria-label="go forward"
-      >
-
-        
-        <ArrowForwardIcon color="primary" fontSize="large" />
-      </IconButton>
+    
     </Paper>
   );
 };

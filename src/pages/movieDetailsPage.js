@@ -39,7 +39,7 @@ const MovieDetailsPage = (props) => {
   }
 
 
-  const casts = cast.cast;
+  const casts = cast.cast.slice(0,10);
 console.log(casts.cast)
 
   
@@ -50,7 +50,11 @@ console.log(casts.cast)
         <>
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
-            <PageTemplatee
+           
+            
+          </PageTemplate>
+
+          <PageTemplatee
         title="Cast of Movie"
         casts={casts}
       action={(cast) => {
@@ -61,8 +65,6 @@ console.log(casts.cast)
         );
       }}
       />
-            
-          </PageTemplate>
          
         </>
       ) : (
