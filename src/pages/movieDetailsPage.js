@@ -14,7 +14,7 @@ import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
 const MovieDetailsPage = (props) => {
   const { id } = useParams();
 
-  const { data:cast,err,load,errr } = useQuery(
+  const { data:cast,err, isLoading: load,errr } = useQuery(
     ["cast", { id: id }],
     getMovieCast
   );
@@ -38,8 +38,9 @@ const MovieDetailsPage = (props) => {
     return <h1>{error.message}</h1>;
   }
 
+  if(movie&&cast!==undefined){
 
-  const casts = cast.cast.slice(0,10);
+  const casts = cast.cast.slice(0,11);
 console.log(casts.cast)
 
   
@@ -73,5 +74,6 @@ console.log(casts.cast)
     </>
   );
 };
+}
 
 export default MovieDetailsPage;
