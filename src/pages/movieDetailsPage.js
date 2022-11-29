@@ -14,15 +14,17 @@ import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
 const MovieDetailsPage = (props) => {
   const { id } = useParams();
 
+  const { data:cast,err,load,errr } = useQuery(
+    ["cast", { id: id }],
+    getMovieCast
+  );
+
   const { data: movie, error, isLoading, isError } = useQuery(
     ["movie", { id: id }],
     getMovie
   );
 
-  const { data:cast,err,load,errr } = useQuery(
-    ["cast", { id: id }],
-    getMovieCast
-  );
+
 
  
 
