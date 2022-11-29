@@ -40,9 +40,7 @@ const queryClient = new QueryClient({
               <Route path ="/shows/:id" element={<ShowPagee/>}/>
               <Route path ="/people/" element={<PeoplePage/>}/>
               <Route path ="/people/:id" element={<PeoplePagee/>}/>
-
         <Route path="/movies/:id" element={<MoviePage />} />
-
       <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
         <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
         <Route path="/movies/:id" element={<MoviePage />} />

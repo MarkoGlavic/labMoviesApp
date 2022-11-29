@@ -7,7 +7,8 @@ import { getMovie } from '../api/tmdb-api'
 import { getMovieCast } from "../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
-import PageTemplatee from "../components/templateCastPage"
+import PageTemplatee from "../components/templateCastListPage"
+import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
 
 
 const MovieDetailsPage = (props) => {
@@ -18,23 +19,26 @@ const MovieDetailsPage = (props) => {
     getMovie
   );
 
-  const { data:cast } = useQuery(
+  const { data:cast,err,load,errr } = useQuery(
     ["cast", { id: id }],
     getMovieCast
   );
 
-  console.log(cast.cast);
-  
+ 
 
 
-  if (isLoading) {
+  if (isLoading || load) {
     return <Spinner />;
   }
 
-  if (isError) {
+
+  if (isError || errr) {
     return <h1>{error.message}</h1>;
   }
 
+
+  const casts = cast.cast;
+console.log(casts.cast)
 
   
 
@@ -44,11 +48,20 @@ const MovieDetailsPage = (props) => {
         <>
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
-            <PageTemplatee>
-      </PageTemplatee>
+            <PageTemplatee
+        title="Cast of Movie"
+        casts={casts}
+      action={(cast) => {
+        return (
+        <>
+        <AddToPlaylistIcon cast={cast}/>
+     </>
+        );
+      }}
+      />
+            
           </PageTemplate>
          
-
         </>
       ) : (
         <p>Waiting for movie details</p>

@@ -27,7 +27,7 @@ const PeoplePage = (props) => {
       action={(people) => {
         return (
         <>
-        <AddToPlaylistIcon poeple={people}/>
+        <AddToPlaylistIcon people={people}/>
      </>
         );
       }}
