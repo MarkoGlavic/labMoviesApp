@@ -21,6 +21,7 @@ const TemplateMoviePage = ({ movie, children }) => {
     return <h1>{error.message}</h1>;
   }
   const images = data.posters.slice(0,1)
+  
 
   return (
     <>
@@ -34,10 +35,11 @@ const TemplateMoviePage = ({ movie, children }) => {
             justifyContent: "space-around",
            
           }}>
-            <ImageList         
+            <ImageList          
                 cols={1}>
-                {  images.map((image) => (
-                    <ImageListItem key={image.file_path}   cols={1}>
+                {  images.map((image)  => ( 
+                  
+                    <ImageListItem  key={image.file_path} cols={1}>
                     <img   
                         src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
                         alt={image.poster_path}  

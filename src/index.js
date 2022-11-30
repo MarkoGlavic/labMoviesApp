@@ -16,6 +16,9 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
+import LoginPage from "./components/authentication/loginPage";
+import AuthContextProvider from "./components/authentication/authContext";
+import ProtectedRoute from "./components/authentication/protectedRoute";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -33,9 +36,17 @@ const queryClient = new QueryClient({
           <BrowserRouter>
               <SiteHeader />     
               <MoviesContextProvider>
+                 <AuthContextProvider>
               <Routes>
+                <Route path = "/login" element = {<LoginPage/>}/>
               <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
-              <Route path="/movies/upcoming" element={ < UpcomingPage/> } />
+
+              <Route path="/movies/upcoming" element={
+                              <ProtectedRoute>
+                                 < UpcomingPage/>
+              </ProtectedRoute>
+              }
+              />
               <Route path="/shows" element={ < ShowPage/> } />
               <Route path ="/shows/:id" element={<ShowPagee/>}/>
               <Route path ="/people/" element={<PeoplePage/>}/>
@@ -47,6 +58,7 @@ const queryClient = new QueryClient({
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={ <Navigate to="/" /> } />
       </Routes>
+      </AuthContextProvider>
       </MoviesContextProvider>
     </BrowserRouter>
     <ReactQueryDevtools initialIsOpen={false} />

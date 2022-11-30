@@ -50,7 +50,7 @@ const PeopleDetailsPage = (props) => {
     
           </PageTemplate>
           <PageTemplatee
-      title="Discover Movies"
+      title="Acted in:"
       actors={actors}
       action={(actor) => {
         return <AddToFavouritesIcon actor={actor} />
