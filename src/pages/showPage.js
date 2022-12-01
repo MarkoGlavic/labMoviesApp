@@ -3,7 +3,7 @@ import PageTemplate from "../components/templateShowListPage";
 import { getShows } from "../api/tmdb-api";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
-import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
+import AddToFavouritesIconShow from "../components/cardIcons/addToFavouritesShow";
 
 
 const ShowPage = (props) => {
@@ -27,7 +27,7 @@ const ShowPage = (props) => {
       action={(show) => {
         return (
         <>
-        <AddToPlaylistIcon show={show}/>
+      <AddToFavouritesIconShow show={show} />
      </>
         );
       }}

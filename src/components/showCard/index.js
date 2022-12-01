@@ -14,21 +14,23 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
+import { ShowsContext } from "../../contexts/showsContext";
 
-export default function ShowCard({ show, action }) {  //const { favourites, addToFavourites } = useContext(MoviesContext);
+
+export default function ShowCard({ show, action }) {  const { favourites, addToFavourites } = useContext(ShowsContext);
 
 
  
-//    if (favourites.find((id) => id === movie.id)) {
-//      movie.favourite = true;
-//    } else {
-//      movie.favourite = false
-//    }
+   if (favourites.find((id) => id === show.id)) {
+      show.favourite = true;
+    } else {
+      show.favourite = false
+    }
  
-//    const handleAddToFavourite = (e) => {
-//      e.preventDefault();
-//      addToFavourites(movie);
-//    };
+   const handleAddToFavourite = (e) => {
+      e.preventDefault();
+      addToFavourites(show);
+    };
  
 
   return (
@@ -43,7 +45,7 @@ export default function ShowCard({ show, action }) {  //const { favourites, addT
         }
         title={
           <Typography variant="h5" component="p">
-            {show.title}{" "}
+            {show.name}{" "}
           </Typography>
         }
       />
