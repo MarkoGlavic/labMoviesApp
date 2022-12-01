@@ -23,7 +23,7 @@ const formControl =
     backgroundColor: "rgb(255, 255, 255)"
   };
 
-  export default function FilterMoviesCard(props) {
+  export default function SortMoviesCard(props) {
     const { data, error, isLoading, isError } = useQuery("genres", getGenres);
   
     if (isLoading) {
@@ -47,9 +47,6 @@ const formControl =
       handleChange(e, "name", e.target.value);
     };
   
-    const handleRateChange = (e, props) => {
-      handleChange(e, "rating", e.target.value.replace(/\D/g, ''));
-    };
     const handleGenreChange = (e) => {
       handleChange(e, "genre", e.target.value);
     };
@@ -74,16 +71,6 @@ const formControl =
       variant="filled"
       value={props.titleFilter}
       onChange={handleTextChange}
-    />
-
-<TextField
-      sx={formControl}
-      id="filled-search"
-      label="Search field"
-      type="search"
-      variant="filled"
-      value={props.ratingFilter}
-      onChange={handleRateChange}
     />
         <FormControl sx={formControl}>
           <InputLabel id="genre-label">Genre</InputLabel>
@@ -112,7 +99,7 @@ const formControl =
       <CardContent>
         <Typography variant="h5" component="h1">
           <SearchIcon fontSize="large" />
-          Filter the movies.
+          Sort the movies.
           <br />
         </Typography>
       </CardContent>
