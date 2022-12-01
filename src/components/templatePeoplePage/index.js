@@ -22,6 +22,7 @@ const TemplatePeoplePage = ({ people, children }) => {
   }
   const images = data.profiles.slice(0,1)
 
+
   return (
     <>
       <PeopleHeader people={people} />
