@@ -53,6 +53,7 @@ const formControl =
     const handleGenreChange = (e) => {
       handleChange(e, "genre", e.target.value);
     };
+    
   
   return (
     <Card 

@@ -8,11 +8,9 @@ import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { getGenres } from "../../api/tmdb-api";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
-import { useQuery } from "react-query";
-import Spinner from '../spinner'
+import Select from "@mui/material/Select";
+import sortings from "./sorting";
 
 
 
@@ -23,33 +21,22 @@ const formControl =
     backgroundColor: "rgb(255, 255, 255)"
   };
 
+  
   export default function SortMoviesCard(props) {
-    const { data, error, isLoading, isError } = useQuery("genres", getGenres);
-  
-    if (isLoading) {
-      return <Spinner />;
-    }
-  
-    if (isError) {
-      return <h1>{error.message}</h1>;
-    }
-    const genres = data.genres;
-    if (genres[0].name !== "All"){
-      genres.unshift({ id: "0", name: "All" });
-    }
-  
+
+
+
     const handleChange = (e, type, value) => {
       e.preventDefault();
       props.onUserInput(type, value); // NEW
     };
-  
-    const handleTextChange = (e, props) => {
-      handleChange(e, "name", e.target.value);
+    
+    const handleSortingChange = (e) =>
+    {
+      handleChange(e, "sorting", e.target.value)
     };
   
-    const handleGenreChange = (e) => {
-      handleChange(e, "genre", e.target.value);
-    };
+    
   
   return (
     <Card 
@@ -61,35 +48,28 @@ const formControl =
       <CardContent>
         <Typography variant="h5" component="h1">
           <SearchIcon fontSize="large" />
-          Filter the movies.
+          Sort the movies.
         </Typography>
-        <TextField
-      sx={formControl}
-      id="filled-search"
-      label="Search field"
-      type="search"
-      variant="filled"
-      value={props.titleFilter}
-      onChange={handleTextChange}
-    />
         <FormControl sx={formControl}>
-          <InputLabel id="genre-label">Genre</InputLabel>
-          <Select
-    labelId="genre-label"
-    id="genre-select"
-    defaultValue=""
-    value={props.genreFilter}
-    onChange={handleGenreChange}
-  >
-            {genres.map((genre) => {
-              return (
-                <MenuItem key={genre.id} value={genre.id}>
-                  {genre.name}
+        <InputLabel id="sorting-label">Sorting</InputLabel>
+
+        <Select
+        labelId="sorting-label"
+              id="sorting-select"
+              defaultValue =""
+              value={props.sortingFilter}
+              onChange={handleSortingChange}
+            >
+              {sortings.map((sort) => {
+                return(
+                <MenuItem key={sort.value} value={sort.value}>
+                  {sort.label}
                 </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
+                ); }
+              )}
+              </Select>
+
+</FormControl>
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}
