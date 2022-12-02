@@ -10,6 +10,7 @@ function MovieListPageTemplate({ movies, title, action }) {
   const [genreFilter, setGenreFilter] = useState("0");
   const [ratingFilter, setRatingFilter] = useState("")
   const [sortingFilter, setSortingFilter] = useState("");
+
   const genreId = Number(genreFilter);
   const rating = Number(ratingFilter)
   const sorting = Number(sortingFilter)
@@ -24,10 +25,18 @@ function MovieListPageTemplate({ movies, title, action }) {
       .filter((m) => {
         return rating > 0 ? m.vote_average>=rating : true;
       })
-      .filter(() => {
-        return sorting===1 ? movies.sort(compareTitle) : sorting === 2 ? movies.sort(compareRating) : true;
-      })
+      if(sorting===1 && (nameFilter==="" && ratingFilter==="" && genreFilter==="0")){
+        movies.sort(compareTitle)
+        displayedMovies=movies
+      }
+      else if(sorting===2 && (nameFilter==="" && ratingFilter==="" && genreFilter==="0")){
+        movies.sort(compareRating)
+          displayedMovies=movies
+        }
+      
     ;
+
+
 
     function compareTitle( a, b ) {
       if ( a.title < b.title ){
@@ -49,9 +58,11 @@ function MovieListPageTemplate({ movies, title, action }) {
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
     else if (type === "rating") setRatingFilter(value);
-    else if (type === "sorting") setSortingFilter(value)
+    else if (type === "sorting") setSortingFilter(value);
     else setGenreFilter(value);
   };
+
+
 
   return (
     <Grid container sx={{ padding: '20px' }}>
@@ -68,14 +79,11 @@ function MovieListPageTemplate({ movies, title, action }) {
           />
          
         </Grid>`
-        <Grid key="sort" item xs={12} sm={6} md={4} lg={3} xl={2}>
+        <Grid key="sorting" item xs={12} sm={6} md={4} lg={3} xl={2}>
         <SortMoviesCard
                     onUserInput={handleChange}
                     sortingFilter={sortingFilter}
-                  
 />
-
-
 </Grid>
         <MovieList action={action} movies={displayedMovies}></MovieList>
       </Grid>

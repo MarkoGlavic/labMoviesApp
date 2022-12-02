@@ -5,7 +5,6 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
@@ -24,11 +23,10 @@ const formControl =
   
   export default function SortMoviesCard(props) {
 
-
-
     const handleChange = (e, type, value) => {
       e.preventDefault();
       props.onUserInput(type, value); // NEW
+      
     };
     
     const handleSortingChange = (e) =>
@@ -59,6 +57,7 @@ const formControl =
               defaultValue =""
               value={props.sortingFilter}
               onChange={handleSortingChange}
+              
             >
               {sortings.map((sort) => {
                 return(
