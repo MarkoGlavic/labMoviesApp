@@ -20,6 +20,7 @@ import FavouriteShowsPage from "./pages/favouriteShowsPage";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 import LoginPage from "./components/authentication/loginPage";
 import AuthContextProvider from "./components/authentication/authContext";
+import { AuthenticationProvider } from "./components/authentication/authenticationContext";
 import ProtectedRoute from "./components/authentication/protectedRoute";
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,6 +41,9 @@ const queryClient = new QueryClient({
               <MoviesContextProvider>
                 <ShowsContextProvider>
                  <AuthContextProvider>
+                  <AuthenticationProvider>
+                
+
               <Routes>
                 <Route path = "/login" element = {<LoginPage/>}/>
               <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
@@ -64,6 +68,7 @@ const queryClient = new QueryClient({
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={ <Navigate to="/" /> } />
       </Routes>
+      </AuthenticationProvider>
       </AuthContextProvider>
       </ShowsContextProvider>
       </MoviesContextProvider>

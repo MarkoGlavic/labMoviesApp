@@ -1,35 +1,63 @@
-import React, { useContext } from "react";
-
-import { AuthContext } from "./authContext";
-
-const LoginPage = () => {
-  const {authenticate } = useContext(AuthContext);
-  const { token, signout } = useContext(AuthContext);
+import React, {useRef, useState} from "react";
+import {Form, Button, Card, Alert } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css"
+import {useAuthentication} from "./authenticationContext";
 
 
-  const login = () => {
-    const password = Math.random().toString(36).substring(7);
-    authenticate('user1', password);
-  };
+export default function Signup() {
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const passwordConfirmRef = useRef()
+  const { signup} = useAuthentication()
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match")
+    }
+
+    try {
+      setError("")
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value)
+    } catch {
+      setError("Failed to create an account")
+    }
+
+    setLoading(false)
+  }
 
   return (
     <>
-  {token ? (
-        <p>
-          Welcome! <button onClick={() => signout()}>Sign out</button>
-        </p>
-      ) : (
-        <p>
-          You are not logged in, if you want access to Upcoming movies or Favourite movies please log in!
-        </p>
-      )}
-
-      <h2>Login page</h2>
-      <p>You must log in to view the protected pages </p>
-      {/* Login web form  */}
-      <button onClick={login}>Submit</button>
+      <Card>
+        <Card.Body>
+          <h2 className="text-center mb-4">Sign Up</h2>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <Form onSubmit={handleSubmit}>
+            <Form.Group id="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email" ref={emailRef} required />
+            </Form.Group>
+            <Form.Group id="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" ref={passwordRef} required />
+            </Form.Group>
+            <Form.Group id="password-confirm">
+              <Form.Label>Password Confirmation</Form.Label>
+              <Form.Control type="password" ref={passwordConfirmRef} required />
+            </Form.Group>
+            <Button disabled={loading} className="w-100" type="submit">
+              Sign Up
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
+      <div className="w-100 text-center mt-2">
+        Already have an account?
+      </div>
     </>
-    )
-};
-
-export default LoginPage;
+  )
+}
