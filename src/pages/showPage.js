@@ -3,11 +3,14 @@ import PageTemplate from "../components/templateShowListPage";
 import { getShows } from "../api/tmdb-api";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
+import { Pagination } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import AddToFavouritesIconShow from "../components/cardIcons/addToFavouritesShow";
 
 
 const ShowPage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('discover-shows', getShows)
+  const [page,setPage]=useState(1)
+  const {  data, error, isLoading, isError }  = useQuery(['discover-shows',page], getShows)
 
   if (isLoading) {
     return <Spinner />
@@ -21,6 +24,7 @@ const ShowPage = (props) => {
 
   
     return (
+      <>
       <PageTemplate
         title="Upcoming Shows"
         shows={shows}
@@ -32,6 +36,14 @@ const ShowPage = (props) => {
         );
       }}
       />
+      <Grid
+    container
+    justifyContent="center"
+    >
+      <Pagination count = {10} page={page} onChange={(e,newPageNum) => setPage(newPageNum)} variant ="outlined"></Pagination>
+    </Grid>
+
+      </>
     );
   };
 
