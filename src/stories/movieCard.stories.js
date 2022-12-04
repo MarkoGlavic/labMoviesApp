@@ -5,12 +5,14 @@ import { MemoryRouter } from "react-router";
 import MoviesContextProvider from "../contexts/moviesContext";
 import { action } from "@storybook/addon-actions";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+import { AuthenticationProvider } from "../components/authentication/authenticationContext";
 
 export default {
   title: "Home Page/MovieCard",
   component: MovieCard,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
+    (Story) => <AuthenticationProvider>{Story()}</AuthenticationProvider>,
     (Story) => <MoviesContextProvider>{Story()}</MoviesContextProvider>,
   ],
 };

@@ -6,12 +6,14 @@ import { action } from "@storybook/addon-actions";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 import Grid from "@mui/material/Grid";
 import MoviesContextProvider from "../contexts/moviesContext";
-
+import { AuthenticationProvider } from "../components/authentication/authenticationContext";
 export default {
   title: "Home Page/MovieList",
   component: MovieList,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
+    (Story) => <AuthenticationProvider>{Story()}</AuthenticationProvider>,
+
     (Story) => <MoviesContextProvider>{Story()}</MoviesContextProvider>,
   ],
 };
