@@ -4,7 +4,7 @@ import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
-import { Pagination, Typography } from "@mui/material";
+import { Pagination} from "@mui/material";
 import Grid from "@mui/material/Grid";
 
 const HomePage = (props) => {

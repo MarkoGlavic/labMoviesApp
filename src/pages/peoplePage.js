@@ -4,11 +4,15 @@ import { getPeople } from "../api/tmdb-api";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToPlaylistIcon from "../components/cardIcons/addToPlaylist";
+import { Pagination } from "@mui/material";
+import Grid from "@mui/material/Grid";
+
 
 
 
 const PeoplePage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('people', getPeople)
+  const [page,setPage]=useState(1)
+  const {  data, error, isLoading, isError }  = useQuery(['people',page], getPeople)
 
   if (isLoading) {
     return <Spinner />
@@ -22,6 +26,7 @@ const PeoplePage = (props) => {
 
   
     return (
+    <>
       <PageTemplate
         title="Popular People"
         peoples={peoples}
@@ -33,7 +38,16 @@ const PeoplePage = (props) => {
         );
       }}
       />
+
+      <Grid
+    container
+    justifyContent="center"
+    >
+      <Pagination count = {10} page={page} onChange={(e,newPageNum) => setPage(newPageNum)} variant ="outlined"></Pagination>
+    </Grid>
+    </>
     );
+    
   };
 
   export default PeoplePage;
