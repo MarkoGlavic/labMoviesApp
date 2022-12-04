@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { getMovies } from "../api/tmdb-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
+import { Pagination, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid";
 
 const HomePage = (props) => {
 
-  const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
-
+  const [page,setPage]=useState(1)
+  const {  data, error, isLoading, isError }  = useQuery(['discover',page], getMovies)
+  
   if (isLoading) {
     return <Spinner />
   }
@@ -23,7 +26,11 @@ const HomePage = (props) => {
   localStorage.setItem('favourites', JSON.stringify(favourites))
   const addToFavourites = (movieId) => true 
 
+  
+
+
   return (
+    <>
     <PageTemplate
       title="Discover Movies"
       movies={movies}
@@ -31,6 +38,15 @@ const HomePage = (props) => {
         return <AddToFavouritesIcon movie={movie} />
       }}
     />
+    <Grid
+    container
+    justifyContent="center"
+    >
+      <Pagination count = {10} page={page} onChange={(e,newPageNum) => setPage(newPageNum)} variant ="outlined"></Pagination>
+    </Grid>
+
+    </>
+
 );
 };
 
