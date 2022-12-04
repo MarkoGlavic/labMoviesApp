@@ -81,7 +81,7 @@ Had to run npm install and then npm i not sure why, but now it works fine.
 ![ ](./images/actor.PNG)
 >Shows actor details, and it also shows the movies the actor is a part of, more info leads to that movie page.
 
-![ ](./images/favoruiteShows.PNG)
+![ ](./images/favouriteShows.PNG
 >Can favourite after logging in, favourited shows/movies appear on appropriate page.
 
 ### Routing.
