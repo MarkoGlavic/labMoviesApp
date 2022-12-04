@@ -26,7 +26,7 @@ const ShowPage = (props) => {
     return (
       <>
       <PageTemplate
-        title="Upcoming Shows"
+        title="TV Shows"
         shows={shows}
       action={(show) => {
         return (
