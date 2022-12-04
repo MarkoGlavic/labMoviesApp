@@ -11,6 +11,7 @@ Name: Marko Glavic
 + Detail view of actors and list of movies the actor acted in
 + Detail view of shows
 + (Modified) Detail view of Movies - list of cast in movie
+* (Modified) Home view - Sorting and Pagination
 + List of favourite shows
 + Login page
 + Sign Up page
