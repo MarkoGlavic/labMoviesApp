@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { ShowsContext } from "../../contexts/showsContext";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { AuthContext } from "../authentication/authContext";
+import { useAuthentication } from "../authentication/authenticationContext";
 
 const AddToFavouritesIconShow = ({ show }) => {
   const context = useContext(ShowsContext);
-  const { token } = useContext(AuthContext);
+  const { currentUser } = useAuthentication();
 
   const handleAddToFavourites = (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ const AddToFavouritesIconShow = ({ show }) => {
 
   return (
     <>
-    {token ? (
+    {currentUser ? (
     <IconButton aria-label="add to favorites" onClick={handleAddToFavourites}>
       <FavoriteIcon color="primary" fontSize="large" />
     </IconButton> ) : (<IconButton aria-label="add to favorites" onClick={myFunction}>

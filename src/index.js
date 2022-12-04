@@ -18,10 +18,10 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import ShowsContextProvider from "./contexts/showsContext";
 import FavouriteShowsPage from "./pages/favouriteShowsPage";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
-import LoginPage from "./components/authentication/loginPage";
-import AuthContextProvider from "./components/authentication/authContext";
+import SignupPage from "./components/authentication/SignupPage";
 import { AuthenticationProvider } from "./components/authentication/authenticationContext";
-import ProtectedRoute from "./components/authentication/protectedRoute";
+import LoginPage from "./components/authentication/login";
+import PrivateRoute from "./components/authentication/privateRoute";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -40,18 +40,16 @@ const queryClient = new QueryClient({
               <SiteHeader />     
               <MoviesContextProvider>
                 <ShowsContextProvider>
-                 <AuthContextProvider>
                   <AuthenticationProvider>
-                
-
               <Routes>
-                <Route path = "/login" element = {<LoginPage/>}/>
+                <Route path = "/signup" element = {<SignupPage/>}/>
+                <Route path= "/login" element ={<LoginPage/>}/>
               <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
 
               <Route path="/movies/upcoming" element={
-                              <ProtectedRoute>
+                              <PrivateRoute>
                                  < UpcomingPage/>
-              </ProtectedRoute>
+              </PrivateRoute>
               }
               />
               <Route path="/shows" element={ < ShowPage/> } />
@@ -60,16 +58,15 @@ const queryClient = new QueryClient({
               <Route path ="/people/:id" element={<PeoplePagee/>}/>
         <Route path="/movies/:id" element={<MoviePage />} />
       <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
-        <Route exact path = "shows/favourites" element = {<ProtectedRoute><FavouriteShowsPage/>
-        </ProtectedRoute>}/>
+        <Route exact path = "shows/favourites" element = {<PrivateRoute><FavouriteShowsPage/>
+        </PrivateRoute>}/>
         <Route exact path="/movies/favourites" element={
-        <ProtectedRoute><FavouriteMoviesPage /></ProtectedRoute>} />
+        <PrivateRoute><FavouriteMoviesPage /></PrivateRoute>} />
         <Route path="/movies/:id" element={<MoviePage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={ <Navigate to="/" /> } />
       </Routes>
       </AuthenticationProvider>
-      </AuthContextProvider>
       </ShowsContextProvider>
       </MoviesContextProvider>
     </BrowserRouter>

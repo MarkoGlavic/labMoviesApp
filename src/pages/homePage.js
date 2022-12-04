@@ -9,6 +9,7 @@ import Grid from "@mui/material/Grid";
 
 const HomePage = (props) => {
 
+  
   const [page,setPage]=useState(1)
   const {  data, error, isLoading, isError }  = useQuery(['discover',page], getMovies)
   

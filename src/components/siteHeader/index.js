@@ -30,8 +30,9 @@ const SiteHeader = ({ history }) => {
     { label: "Shows", path: "/shows" },
     { label: "Favourite Shows", path: "/shows/favourites"},
     { label: "People", path: "/people" },
-    { label :"Login", path :"/login"}
-  ];
+    { label :"Sign up", path :"/signup"},
+    { label: "Login", path: "/login"}
+  ]; 
 
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL, { replace: true });
