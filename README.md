@@ -6,8 +6,8 @@ Name: Marko Glavic
 
 ### New Pages.
 
-+ List of shows
-+ List of actors
++ List of shows, filtering and pagination
++ List of actors, filtering and pagination
 + Detail view of actors and list of movies the actor acted in
 + Detail view of shows
 + (Modified) Detail view of Movies - list of cast in movie
