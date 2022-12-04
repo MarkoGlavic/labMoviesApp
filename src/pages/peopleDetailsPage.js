@@ -47,15 +47,15 @@ const PeopleDetailsPage = (props) => {
         <>
           <PageTemplate people={people}>
             <PeopleDetails people={people} />
-    
-          </PageTemplate>
-          <PageTemplatee
+            <PageTemplatee
       title="Acted in:"
       actors={actors}
       action={(actor) => {
         return <AddToFavouritesIcon actor={actor} />
       }}
     />
+          </PageTemplate>
+   
         </>
       ) : (
         <p>Waiting for peopleperson details</p>

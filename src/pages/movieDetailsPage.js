@@ -54,10 +54,7 @@ console.log(casts.cast)
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
            
-            
-          </PageTemplate>
-
-          <PageTemplatee
+            <PageTemplatee
         title="Cast of Movie"
         casts={casts}
       action={(cast) => {
@@ -68,6 +65,9 @@ console.log(casts.cast)
         );
       }}
       />
+          </PageTemplate>
+
+ 
          
         </>
       ) : (
