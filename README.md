@@ -1,91 +1,110 @@
-# moviesapp-ci-2021
+# Web App Dev 2 - Assignment 1 - ReactJS app.
 
+Name: Marko Glavic
 
+## Overview.
 
-## Getting started
+### New Pages.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
++ List of shows
++ List of actors
++ Detail view of actors and list of movies the actor acted in
++ Detail view of shows
++ (Modified) Detail view of Movies - list of cast in movie
++ List of favourite shows
++ Login page
++ Sign Up page
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### New Features.
 
-## Add your files
++ Authentication (using Firebase)
++ Favouriting shows
++ Pagination
++ Sorting alphabetically and based on highest rating
++ Filtering all values below certain number
++ Caching present everywhere
 
-- [ ] [Create](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+## Setup requirements.
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/oconnordiarmuid/moviesapp-ci-2021.git
-git branch -M main
-git push -uf origin main
-```
+Had to run npm install and then npm i not sure why, but now it works fine. 
 
-## Integrate with your tools
+## TMDB endpoints.
 
-- [ ] [Set up project integrations](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/integrations/)
++ /discover/tv - List of tv shows
++ /tv/{tv_id} - Specific tv show details
++ movies/{movie_id}/credits - All actors  that acted in specific movie 
++ /person/popular - A list of popular actors
++ /person/{person_id} - Actor details
++ /person/{person_id}/movie_credits - Movies that actor acted in
++ /genre/tv - All genres of tv shows
++ /tv/{tv_id}/images - Images for tv shows
++ /person/{person_id}/images - Images for actors
 
-## Collaborate with your team
+## App Design.
 
-- [ ] [Invite team members and collaborators](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Automatically merge when pipeline succeeds](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+### Component catalogue.
 
-## Test and Deploy
+![](./images/stories.png)
 
-Use the built-in continuous integration in GitLab.
+### UI Design.
 
-- [ ] [Get started with GitLab CI/CD](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/clusters/agent/)
+![ ](./images/detail.png)
 
-***
+>Shows detailed information on a movie. Clicking the 'Reviews' floating action button will display extracts from critic reviews. Added cast of movie, clicking on more info shows actor details page of that actor
 
-# Editing this README
+![ ](./images/movieList.png)
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://www.makeareadme.com/) for this template.
+>Added one extra field to filtering of movies (based on rating), and also added sorting (alphabetical and rating).
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+![ ](./images/pagination.png)
 
-## Name
-Choose a self-explaining name for your project.
+>Added pagination to every discover page.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+![ ](./images/signup.png)
+>Added signup page using firebase, login is clickable and links to login page.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+![ ](./images/login.png)
+>Added login page that checks firebase if user exists, can also log out from this page.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+![ ](./images/firebasework.png)
+>Firebase page to prove that it stores users.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+![ ](./images/tvshows.png)
+>List of tv shows can click more info to get shows details, pagination at bottom of page.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+![ ](./images/tvdetail.png)
+>Simple page that displays some show details.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+![ ](./images/people.png)
+>Shows a list of popular actors, can filter them by name. More info clickable and pagination at bottom.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+![ ](./images/actor.png)
+>Shows actor details, and it also shows the movies the actor is a part of, more info leads to that movie page.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+![ ](./images/favoruiteShows.png)
+>Can favourite after logging in, favourited shows/movies appear on appropriate page.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+### Routing.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+[ List the __new routes__ supported by your app and state the associated page.]
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+e.g. 
 
-## License
-For open source projects, say how it is licensed.
++ /signup - used to signup a user to firebase, need to provide email, password and confirm password.
++ /login - logins or logouts a user, needed for protected parts.
++ /shows - displays a list of shows and favouriting is not possible unless logged in, alert comes up telling you to log in.
++ /shows/:id - shows details about a show.
++ /shows/favourites (protected) - shows favourite shows of a user.
++ /movies/favourites (protected) - shows favourite movies of a user.
++ / - favouriting of movies is not possible unless logged in, alert comes up telling you to log in
++ /people - shows a list of popular people.
++ /people/:id - shows details about a particular person.
++ /movies/upcoming (protected) - shows upcoming movies.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
++ Favouriting is not a public feature, have to log in to do it.
 
+## Independent learning (If relevant).
+
++ Firebase: https://www.freecodecamp.org/news/how-to-use-the-firebase-database-in-react/ and https://www.youtube.com/watch?v=PKwu15ldZ7k
+
++ Pagination: https://react-query-v3.tanstack.com/guides/paginated-queries
