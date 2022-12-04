@@ -89,10 +89,6 @@ Had to run npm install and then npm i not sure why, but now it works fine.
 
 ### Routing.
 
-[ List the __new routes__ supported by your app and state the associated page.]
-
-e.g. 
-
 + /signup - used to signup a user to firebase, need to provide email, password and confirm password.
 + /login - logins or logouts a user, needed for protected parts.
 + /shows - displays a list of shows and favouriting is not possible unless logged in, alert comes up telling you to log in.
