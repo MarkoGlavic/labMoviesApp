@@ -52,36 +52,36 @@ Had to run npm install and then npm i not sure why, but now it works fine.
 
 >Shows detailed information on a movie. Clicking the 'Reviews' floating action button will display extracts from critic reviews. Added cast of movie, clicking on more info shows actor details page of that actor
 
-![ ](./images/movieList.png)
+![ ](./images/movieList.PNG)
 
 >Added one extra field to filtering of movies (based on rating), and also added sorting (alphabetical and rating).
 
-![ ](./images/pagination.png)
+![ ](./images/pagination.PNG)
 
 >Added pagination to every discover page.
 
-![ ](./images/signup.png)
+![ ](./images/signup.PNG)
 >Added signup page using firebase, login is clickable and links to login page.
 
-![ ](./images/login.png)
+![ ](./images/login.PNG)
 >Added login page that checks firebase if user exists, can also log out from this page.
 
-![ ](./images/firebasework.png)
+![ ](./images/firebasework.PNG)
 >Firebase page to prove that it stores users.
 
-![ ](./images/tvshows.png)
+![ ](./images/tvshows.PNG)
 >List of tv shows can click more info to get shows details, pagination at bottom of page.
 
-![ ](./images/tvdetail.png)
+![ ](./images/tvdetail.PNG)
 >Simple page that displays some show details.
 
-![ ](./images/people.png)
+![ ](./images/people.PNG)
 >Shows a list of popular actors, can filter them by name. More info clickable and pagination at bottom.
 
-![ ](./images/actor.png)
+![ ](./images/actor.PNG)
 >Shows actor details, and it also shows the movies the actor is a part of, more info leads to that movie page.
 
-![ ](./images/favoruiteShows.png)
+![ ](./images/favoruiteShows.PNG)
 >Can favourite after logging in, favourited shows/movies appear on appropriate page.
 
 ### Routing.
