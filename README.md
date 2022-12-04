@@ -84,6 +84,9 @@ Had to run npm install and then npm i not sure why, but now it works fine.
 ![ ](./images/favouriteShows.PNG)
 >Can favourite after logging in, favourited shows/movies appear on appropriate page.
 
+![ ](./images/alert.PNG)
+>Alert that pops up both for movies and shows.
+
 ### Routing.
 
 [ List the __new routes__ supported by your app and state the associated page.]
